@@ -7,13 +7,13 @@ const DeskripsiComponent = () => {
     return(
         <div>
             <Box>
-                <h2 className='font-bold text-3xl'>Sofa Premium Warna Gray</h2>
+                <h2 className='font-bold text-3xl mb-1'>Sofa Premium Warna Gray</h2>
                 <Box className='flex mb-10'>
                     <Box className='mr-10'>
                         <span>Terjual 250 produk</span>
                     </Box>
                     <Box className='flex'>
-                        <CIcon icon={cilStar} className='w-6'></CIcon>
+                        <CIcon icon={cilStar} className='w-6 mr-1'></CIcon>
                         <p>5.0</p>
                     </Box>
                 </Box>

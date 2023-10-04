@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 const CardComponent = (props) => {
     return(
       <Box className='w-60' borderRadius="xl" boxShadow="md">
-        <Image src={props.src} borderTopRadius="xl"/>
+        <Image src={props.src} borderTopRadius="xl" className='w-full h-1/2'/>
         <Box p="6">
             <Box  className='mb-2'>
                 <h2>{props.nama}</h2>
