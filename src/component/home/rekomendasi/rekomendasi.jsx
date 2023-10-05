@@ -12,6 +12,7 @@ const RekomendasiComponent = () => {
                     harga="2.000.000"
                     rating="4.0"
                     terjual="20"
+                    slug="sofa"
                 />
                 <CardComponent
                     src="../img/sofa.jpg"
@@ -19,6 +20,7 @@ const RekomendasiComponent = () => {
                     harga="2.000.000"
                     rating="4.0"
                     terjual="20"
+                    slug="lorem"
                 />
                 <CardComponent
                     src="../img/sofa.jpg"
@@ -26,6 +28,7 @@ const RekomendasiComponent = () => {
                     harga="2.000.000"
                     rating="4.0"
                     terjual="20"
+                    slug="test"
                 />
                 
             </div>

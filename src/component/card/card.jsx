@@ -2,26 +2,34 @@ import { Box, Card, CardBody, Image } from '@chakra-ui/react';
 import { cilStar } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 const CardComponent = (props) => {
+    const navigate = useNavigate()
+
+    const redirectToDetail = (e) => {
+        let slug = e.target.getAttribute("slug")
+        navigate(`../${slug}`)
+    }
+
     return(
-      <Box className='w-60' borderRadius="xl" boxShadow="md">
-        <Image src={props.src} borderTopRadius="xl" className='w-full h-1/2'/>
-        <Box p="6">
-            <Box  className='mb-2'>
-                <h2>{props.nama}</h2>
+      <Box className='w-60 cursor-pointer' onClick={redirectToDetail} borderRadius="xl" boxShadow="md" slug={props.slug}>
+        <Image src={props.src} borderTopRadius="xl" className='w-full h-1/2' slug={props.slug}/>
+        <Box p="6" slug={props.slug}>
+            <Box  className='mb-2' slug={props.slug}>
+                <h2 slug={props.slug}>{props.nama}</h2>
             </Box>
             {
                 props.diskon === true &&
-                <Box textDecor="line-through" fontSize="13">
+                <Box textDecor="line-through" fontSize="13" slug={props.slug}>
                     {props.hargadiskon}
                 </Box>
             }
-            <Box fontWeight="bold" className='mb-4'>
+            <Box fontWeight="bold" className='mb-4' slug={props.slug}>
                 {props.harga}
             </Box>
-            <Box className='flex'>
+            <Box className='flex' slug={props.slug}>
                 <CIcon icon={cilStar} className='w-5 h-5 mr-1'/>
                 <span className='mr-4'>{props.rating}</span>
                 <span className='mr-4'>|</span>

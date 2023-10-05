@@ -8,7 +8,7 @@ import AvatarProfileComponent from './component/avatar';
 import {cilCart} from "@coreui/icons"
 import  CIcon  from '@coreui/icons-react';
 import { useNavigate } from 'react-router-dom';
-
+import {ReactSearchAutocomplete } from "react-search-autocomplete"
 
 
 const NavComponent = (props) => {
@@ -24,7 +24,7 @@ const NavComponent = (props) => {
             </div>
             <div className='w-full'>
                 <FormControl>
-                    <Input type="text" className='w-full'/>
+                    <ReactSearchAutocomplete />
                 </FormControl>
             </div>
             <div className='w-10 mx-2'>
