@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, Image } from '@chakra-ui/react';
+import { Box, Card, CardBody, Image, Text } from '@chakra-ui/react';
 import { cilStar } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import React, { useState, useEffect } from 'react';
@@ -14,11 +14,11 @@ const CardComponent = (props) => {
     }
 
     return(
-      <Box className='w-60 cursor-pointer' onClick={redirectToDetail} borderRadius="xl" boxShadow="md" slug={props.slug}>
+      <Box className='w-60 cursor-pointer border border-gray-200' onClick={redirectToDetail} borderRadius="xl" boxShadow="md" slug={props.slug}>
         <Image src={props.src} borderTopRadius="xl" className='w-full h-1/2' slug={props.slug}/>
         <Box p="6" slug={props.slug}>
             <Box  className='mb-2' slug={props.slug}>
-                <h2 slug={props.slug}>{props.nama}</h2>
+                <Text noOfLines={2} slug={props.slug}>{props.nama}</Text>
             </Box>
             {
                 props.diskon === true &&

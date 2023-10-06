@@ -18,11 +18,11 @@ const NavComponent = (props) => {
     }
 
     return(
-        <nav className='flex flex-row h-12 items-center mb-8' >
-            <div className='mr-1 w-13' >
+        <nav className='flex flex-row h-20 p-6 items-center mb-8 fixed w-full z-50 bg-white' >
+            <div className='mr-4 w-13' >
                 <h2 style={{color:"#79AC78",fontWeight:"bold"}} className='cursor-pointer' onClick={backToHome}>Karya Makmur</h2>
             </div>
-            <div className='w-full'>
+            <div className='w-5/6'>
                 <FormControl>
                     <ReactSearchAutocomplete />
                 </FormControl>

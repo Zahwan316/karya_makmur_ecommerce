@@ -14,7 +14,7 @@ import RekomendasiComponent from '../component/home/rekomendasi/rekomendasi';
 const HomePage = () => {
     return(
         <DefaultLayout>
-            <div className=' drop-shadow-lg relative mb-5' >
+            <div className=' drop-shadow-lg relative mb-5 border border-gray-300' >
                 <Carousel showArrows={true} dynamicHeight={true} autoPlay={true} showThumbs={false} infiniteLoop={true}>
                     <div>
                         <img src="./img/banner.jpg" alt="Slide 1" style={{height:"30em"}} />

@@ -5,7 +5,7 @@ import {ReactSearchAutocomplete } from "react-search-autocomplete"
 
 const FilterBoxComponent = () => {
     return(
-        <div className='w-64 border border-slate-200 rounded-md p-6'> 
+        <div className='w-64 h-64 border border-slate-200 rounded-md p-6'> 
             <h2 className='font-bold mb-4'>Filter</h2>
             <div>
                 <InputGroup className='mb-4'>
@@ -20,9 +20,6 @@ const FilterBoxComponent = () => {
                     </InputLeftAddon>
                     <Input type="text" placeholder='Harga Maksimal' />
                 </InputGroup>
-                <ReactSearchAutocomplete>
-
-                </ReactSearchAutocomplete>
                 <Button variant="outline" style={{borderColor:"#B0D9B1"}}>Cari</Button>
             </div>
         </div>
