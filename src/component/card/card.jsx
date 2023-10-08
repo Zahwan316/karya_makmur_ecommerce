@@ -14,7 +14,7 @@ const CardComponent = (props) => {
     }
 
     return(
-      <Box className='w-60 cursor-pointer border border-gray-200' onClick={redirectToDetail} borderRadius="xl" boxShadow="md" slug={props.slug}>
+      <Box className='w-60 cursor-pointer border border-slate-300 shadow-xl' onClick={redirectToDetail} borderRadius="xl" boxShadow="md" slug={props.slug}>
         <Image src={props.src} borderTopRadius="xl" className='w-full h-1/2' slug={props.slug}/>
         <Box p="6" slug={props.slug}>
             <Box  className='mb-2' slug={props.slug}>

@@ -21,14 +21,16 @@ const CardFloating = (props) => {
     },[stock])
 
     return(
-       <div className='rounded-lg ml-12 w-auto h-34 border p-5' style={{borderColor:"#C8C8C8"}}>
+       <div className={`rounded-lg ml-12 w-auto  border p-5 h-${props.height}`} style={{borderColor:"#C8C8C8"}}>
         {
             props.page === "detail" ?
             <h2 className='font-bold text-xl mb-3'>Atur Jumlah</h2>
             :
             (
-                props.page === "keranjang" &&
-                <h2 className='font-bold text-xl mb-3'>Ringkasan Belanja</h2>
+                props.page === "keranjang" || props.page === "pembayaran" ?
+                <h2 className='font-bold text-xl mb-3'>Ringkasan Belanja</h2> 
+                :
+                ""
 
             )
         }
@@ -53,6 +55,7 @@ const CardFloating = (props) => {
                
             </>
         }
+
         {
             props.page === "keranjang" &&
             <>
@@ -62,17 +65,36 @@ const CardFloating = (props) => {
                 </div>
             </>
         }
-                 <div className='flex items-center mb-5'>
-                    <p className='text-xl mr-2'>Total : </p>
-                    <h2 className='font-bold text-2xl'>Rp2.000.000</h2>
+
+        {
+            props.page === "pembayaran" &&
+            <>
+                <div className='flex flex-row mb-1'>
+                    <p className='mr-20'>Harga : </p>
+                    <p>Rp4.000.000</p>
                 </div>
-                <div className='flex flex-col gap-3'>
-                    {
-                        props.apge === "detail" &&
-                        <Button style={{backgroundColor:"#B0D9B1",color:"white"}} >+ Keranjang</Button>
-                    }
-                    <Button variant="outline" style={{borderColor:"#B0D9B1",color:"#B0D9B1"}}>Beli</Button>
+                <div className='flex flex-row mb-6'>
+                    <p className='mr-9'>Jasa Aplikasi : </p>
+                    <p>Rp1.000</p>
                 </div>
+            </>
+        }
+
+         <div className='flex items-center mb-5'>
+            <p className='text-xl mr-2'>Total : </p>
+            <h2 className='font-bold text-2xl'>Rp2.000.000</h2>
+        </div>
+        <div className='flex flex-col gap-3'>
+            {
+                props.page === "detail" &&
+                <Button style={{backgroundColor:"#B0D9B1",color:"white"}} >+ Keranjang</Button>
+            }
+            {
+                props.page != "pembayaran" &&
+                <Button variant="outline" style={{borderColor:"#B0D9B1",color:"#B0D9B1"}}>Beli</Button>
+
+            }
+        </div>
        </div>
     )
 }

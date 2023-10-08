@@ -13,8 +13,13 @@ import {ReactSearchAutocomplete } from "react-search-autocomplete"
 
 const NavComponent = (props) => {
     const navigate = useNavigate()
+
     const backToHome = () => {
         navigate("/")
+    }
+
+    const navigateToCart = () => {
+        navigate("/keranjang")
     }
 
     return(
@@ -27,8 +32,8 @@ const NavComponent = (props) => {
                     <ReactSearchAutocomplete />
                 </FormControl>
             </div>
-            <div className='w-10 mx-2'>
-                <CIcon icon={cilCart} size='sm' />
+            <div className='w-8 mx-2'>
+                <CIcon icon={cilCart} size='sm' className='cursor-pointer' onClick={navigateToCart} />
             </div>
             <div className='ml-3'>
                 <AvatarProfileComponent />
