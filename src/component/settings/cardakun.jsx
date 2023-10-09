@@ -1,14 +1,28 @@
 import { Avatar, Box, Button } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CardAkunComponent = (props) => {
   const menus = [
-    "Biodata",
-    "Alamat",
+    {
+      name:"Biodata",
+      link:"biodata"
+    },
+    {
+      name:"Alamat",
+      link:"alamat"
+    },
   ]
 
+  const navigate = useNavigate()
+
+  const redirect = (e) => {
+    const link = e.target.getAttribute("link")
+    navigate(`../settings/${link}`)
+  }
+
   return(
-    <Box className='relative border border-gray-300 w-64 flex flex-col items-center px-4 py-8 rounded-lg'>
+    <Box className='relative border border-gray-300 w-64 flex flex-col items-center px-4 py-8 rounded-lg h-96'>
       <Box className='flex flex-col justify-center items-center mb-8'>
         <Avatar size="lg" className='mb-2' />
         <h2>Lorem Ipsum Dolor</h2>
@@ -17,8 +31,8 @@ const CardAkunComponent = (props) => {
         <h2 className='font-bold text-xl mb-2'>Menu</h2>
         <Box>
            {
-            menus.map(item => 
-             <p className='hover:text-green-500 cursor-pointer text-md ml-2 mb-2' >{item}</p>    
+            menus.map((item,index) => 
+             <p className='hover:text-green-500 cursor-pointer text-md ml-2 mb-2' link={item.link} key={index} onClick={redirect} >{item.name}</p>    
             )
            }
         </Box>

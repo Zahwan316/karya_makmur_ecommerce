@@ -1,11 +1,14 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, useDisclosure } from '@chakra-ui/react';
 import { cilArrowCircleRight, cilLocationPin } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import React, { useState, useEffect } from 'react';
+import ModalComponent from '../modal/modal';
 
 const CardPembayaranComponent = () => {
+    const{isOpen,onOpen,onClose} = useDisclosure()
+
     return(
-        <Box className='bg-gray-300 flex flex-row p-6  rounded-xl shadow-lg cursor-pointer mb-8'>
+        <Box className='bg-gray-300 flex flex-row p-6  rounded-xl shadow-lg cursor-pointer mb-8' onClick={onOpen}>
             <Box className='mr-4'>
                 <CIcon icon={cilLocationPin} className="w-10 h-10" />
             </Box>
@@ -20,6 +23,13 @@ const CardPembayaranComponent = () => {
             <Box className='flex items-center right-0 relative'>
                 <CIcon icon={cilArrowCircleRight} className='h-5 w-5'/>
             </Box>
+            <ModalComponent 
+                isopen={isOpen}
+                onclose={onClose}
+                onopen={onOpen}
+                title="Pilih Alamat"
+                size="xl"
+            />
         </Box>
     )
 }

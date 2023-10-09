@@ -4,6 +4,7 @@ import CardAkunComponent from '../component/settings/cardakun';
 import { Box } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import BiodataSettingComponent from '../component/settings/biodata';
+import AlamatSettingsComponent from '../component/settings/alamat';
 
 const SettingPage = (props) => {
   const {option} = useParams()
@@ -16,6 +17,10 @@ const SettingPage = (props) => {
         {
             option === "biodata" &&
             <BiodataSettingComponent />
+        }
+        {
+            option === "alamat" &&
+            <AlamatSettingsComponent />
         }
       </Box>
     </DefaultLayout>

@@ -23,6 +23,8 @@ function App() {
         <Route path="/pembayaran" Component={PembayaranPage} />
         <Route path="/daftar-transaksi" Component={DaftarTransaksiPage} />
         <Route path="/settings/:option" Component={SettingPage} />
+        {/* Route Pegawai */}
+        <Route path="/pegawai/home" Component={HomePage} role="pegawai" />
       </Routes>
     </BrowserRouter>
   );
