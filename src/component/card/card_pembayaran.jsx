@@ -3,6 +3,7 @@ import { cilArrowCircleRight, cilLocationPin } from '@coreui/icons';
 import CIcon from '@coreui/icons-react';
 import React, { useState, useEffect } from 'react';
 import ModalComponent from '../modal/modal';
+import AlamatPengirimanComponent from '../pembayaran/alamat_pengiriman/alamat_pengiriman';
 
 const CardPembayaranComponent = () => {
     const{isOpen,onOpen,onClose} = useDisclosure()
@@ -28,7 +29,8 @@ const CardPembayaranComponent = () => {
                 onclose={onClose}
                 onopen={onOpen}
                 title="Pilih Alamat"
-                size="xl"
+                size="2xl"
+                body={<AlamatPengirimanComponent />}
             />
         </Box>
     )
