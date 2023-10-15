@@ -9,6 +9,7 @@ import KeranjangPage from './page/keranjang';
 import PembayaranPage from './page/pembayaran';
 import DaftarTransaksiPage from './page/daftartransaksi';
 import SettingPage from './page/settings';
+import ListSemuaBarangComponent from './page/listbarang';
 
 
 function App() {
@@ -24,7 +25,9 @@ function App() {
         <Route path="/daftar-transaksi" Component={DaftarTransaksiPage} />
         <Route path="/settings/:option" Component={SettingPage} />
         {/* Route Pegawai */}
-        <Route path="/pegawai/home" Component={HomePage} role="pegawai" />
+        <Route path="/pegawai/home" element={<HomePage role="pegawai" />}  />
+        <Route path="/pegawai/kategori" element={<KategoriPage role="pegawai" />}  />
+        <Route path="/pegawai/listbarang" element={<ListSemuaBarangComponent role="pegawai" />}  />
       </Routes>
     </BrowserRouter>
   );

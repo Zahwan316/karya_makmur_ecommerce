@@ -9,7 +9,9 @@ const ModalComponent = (props) => {
         <ModalHeader>{props.title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          {props.body}
+          <form >
+            {props.body}
+          </form>
         </ModalBody>
         <ModalFooter>
           <Button  mr={3} onClick={props.onclose}>
