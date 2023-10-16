@@ -6,19 +6,19 @@ const ModalComponent = (props) => {
     <Modal isOpen={props.isopen} onClose={props.onclose} size={props.size}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{props.title}</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <form >
-            {props.body}
-          </form>
-        </ModalBody>
-        <ModalFooter>
-          <Button  mr={3} onClick={props.onclose}>
-            Close
-          </Button>
-          <Button colorScheme='green' >Simpan</Button>
-        </ModalFooter>
+        <form onSubmit={props.handlesubmit} >
+         <ModalHeader>{props.title}</ModalHeader>
+         <ModalCloseButton />
+         <ModalBody>
+             {props.body}
+         </ModalBody>
+         <ModalFooter>
+           <Button  mr={3} onClick={props.onclose}>
+             Close
+           </Button>
+           <Button colorScheme='green' type='submit' >Simpan</Button>
+         </ModalFooter>
+        </form>
       </ModalContent>
         
     </Modal>
