@@ -14,6 +14,16 @@ const CardFloating = (props) => {
         setstock(prev => prev - 1)
     }
 
+    const formatter = new Intl.NumberFormat("id-ID",{
+        style:"decimal",
+        useGrouping:true
+    }  
+    )
+
+    let numberformat = formatter.format(props.harga )
+
+    let totalharga = props.harga * stock
+
     useEffect(() => {
         if(stock < 0){
             setstock(0)
@@ -49,7 +59,7 @@ const CardFloating = (props) => {
                 </div>
                 <div className='flex mb-8'>
                     <p className='mr-2'>Stok : </p>
-                    <span className='font-bold'>500</span>
+                    <span className='font-bold'>{props.stok}</span>
                 </div>
                 
                
@@ -82,7 +92,7 @@ const CardFloating = (props) => {
 
          <div className='flex items-center mb-5'>
             <p className='text-xl mr-2'>Total : </p>
-            <h2 className='font-bold text-2xl'>Rp2.000.000</h2>
+            <h2 className='font-bold text-2xl'>{formatter.format(totalharga)}</h2>
         </div>
         <div className='flex flex-col gap-3'>
             {

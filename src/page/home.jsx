@@ -11,13 +11,51 @@ import KategoryComponent from '../component/home/kategori/kategori';
 import ProdukTerlarisComponent from '../component/home/produk_terlaris/produk_terlaris';
 import RekomendasiComponent from '../component/home/rekomendasi/rekomendasi';
 import { useNavigate } from 'react-router-dom';
+import useItemStore from '../state/item';
+import axios from 'axios';
 
 const HomePage = (props) => {
     const navigate = useNavigate()
-    
+    const [databarang,setdatabarang] = useItemStore((state) => [state.barang,state.setbarang])
+    const [datakategori,setdatakategori] = useItemStore((state) => [state.kategori,state.setkategori])
+    const [isload,setisload] = useState(false)
+
     const redirectToListBarang = () => {
         navigate("../pegawai/listbarang")
     }
+
+    const formatharga = (harga) => {
+        const formatter = Intl.NumberFormat("id-ID",{
+            style: "decimal",
+            useGrouping:true
+        })
+        const format = formatter.format(harga)
+        return format
+    }
+
+    useEffect(() => {
+        const fetchdata = async() => {
+            try{
+              if(Object.keys(databarang).length === 0){
+                let res = await axios.get(`${process.env.REACT_APP_URL_API}barang`)
+                setdatabarang(res.data.data)
+              }
+              if(Object.keys(datakategori).length === 0){
+                let res = await axios.get(`${process.env.REACT_APP_URL_API}kategori`)
+                setdatakategori(res.data.data)
+              }
+            }
+            catch(e){
+              throw new Error(e)
+            }
+            finally{
+                setisload(true)
+            }
+        }
+        setTimeout(() => {
+            fetchdata()
+        },500)
+    },[])
 
     return(
         <DefaultLayout>
@@ -36,9 +74,20 @@ const HomePage = (props) => {
                     </div>
                 </Carousel>
             </div>
-            <KategoryComponent />
-            <ProdukTerlarisComponent />
-            <RekomendasiComponent />
+            <KategoryComponent 
+              datakategori={datakategori}
+              isload={isload}
+            />
+            <ProdukTerlarisComponent 
+              databarang={databarang}
+              formatharga={formatharga}
+              isload={isload}
+            />
+            <RekomendasiComponent
+              databarang={databarang}
+              formatharga={formatharga}
+              isload={isload}
+            />
         </DefaultLayout>
     )
 }

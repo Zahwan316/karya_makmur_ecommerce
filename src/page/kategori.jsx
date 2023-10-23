@@ -100,7 +100,7 @@ const KategoriPage = (props) => {
       setisload(false)
     })
     Swal.fire({
-      title:`Data Berhasil ${method === 'post' ? "Data berhasil diedit" : "Data Berhasil Diupdate"}`,
+      title:`Data Berhasil ${method === 'post' ? "Data berhasil ditambah" : "Data Berhasil Diupdate"}`,
       icon:"success"
     })
     onClose()
@@ -112,6 +112,8 @@ const KategoriPage = (props) => {
     const formdata = new FormData();
     formdata.append("gambar",forminput.gambar)
     formdata.append("nama",forminput.nama)
+    
+    
     
     if(typeform === "tambah"){
       PostPutSubmit("kategori","post",formdata)

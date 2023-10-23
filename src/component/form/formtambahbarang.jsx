@@ -8,7 +8,7 @@ import FormKategoriBarangComponent from './formkategoribarang';
 import useFormStore from '../../state/form';
 import axios from 'axios';
 
-const FormTambahBarangComponent = () => {
+const FormTambahBarangComponent = (props) => {
   const[isdiskon,setisdiskon] = useState(false)
   const{onClose:kategorionclose,onOpen:kategorionopen,isOpen:kategoriisopen} = useDisclosure()
   const{onClose:varianonclose,onOpen:varianonopen,isOpen:varianisopen} = useDisclosure()
@@ -17,7 +17,7 @@ const FormTambahBarangComponent = () => {
   const[forminput,setforminput] = useFormStore((state) => [state.form,state.setform])
 
   useEffect(() => {
-    console.log(forminput)
+    
   })
 
   const handleforminput = (e) => {
@@ -37,21 +37,25 @@ const FormTambahBarangComponent = () => {
     }
   }
 
+  const handleSlug = () => {
+    let value = forminput.nama
+    const modified = value.replace(/\s+/g,'-')
+    setforminput("slug",modified)
+  }
+
   const handleUploadedFiles = (e) => {
     const files = e.target.files
     if(files){
       setselectedfiles([...selectedfiles,...Array.from(files)])
-      setforminput("gambars",files)
+      setforminput("gambars",Array.from(files))
     }
   }
-
-  
 
   return(
     <Box>
       <div className='mb-4'>
         <FormLabel>Nama Barang</FormLabel>
-        <Input type="text" name="nama" onChange={handleforminput} />
+        <Input type="text" name="nama" onChange={handleforminput} onBlur={handleSlug} value={forminput.nama} />
       </div>
       <div className='mb-4'>
         <FormLabel>Gambar Barang Yang Akan Dijadikan Thumbnail</FormLabel>
@@ -65,7 +69,7 @@ const FormTambahBarangComponent = () => {
           <Button as="span" colorScheme='green'>Upload File</Button>
         </FormLabel>
       </div>
-      <div className='mb-4'>
+      {/* <div className='mb-4'>
         <FormLabel>Gambar Barang</FormLabel>
         <Flex gap={3} marginBottom={4} wrap={'wrap'}>
           {
@@ -80,27 +84,27 @@ const FormTambahBarangComponent = () => {
         <FormLabel htmlFor='file-uploads'>
           <Button as="span" colorScheme='green'>Upload File</Button>
         </FormLabel>
-      </div>
+      </div> */}
       <div className='mb-4'>
         <FormLabel>Deskripsi Barang</FormLabel>
-        <Textarea resize="none" height={40} name="deskripsi" onChange={handleforminput} />
+        <Textarea resize="none" height={40} name="deskripsi" onChange={handleforminput} value={forminput.deskripsi} />
       </div>
       <div className='mb-4'>
         <FormLabel>Spesifikasi Barang</FormLabel>
-        <Textarea resize="none" height={40} name="spesifikasi" onChange={handleforminput} />
+        <Textarea resize="none" height={40} name="spesifikasi" value={forminput.spesifikasi} onChange={handleforminput} />
       </div>
       <div className='mb-4'>
         <FormLabel>Harga Barang</FormLabel>
         <InputGroup>
           <InputLeftAddon>Rp</InputLeftAddon>
-          <Input type="number" name="harga_asli" onChange={handleforminput} />
+          <Input type="number" name="harga_asli" value={forminput.harga_asli} onChange={handleforminput} />
         </InputGroup>
       </div>
       <div className='mb-4'>
         <FormLabel>Stok Barang</FormLabel>
-        <Input type="number" name="stok" onChange={handleforminput} />
+        <Input type="number" name="stok" value={forminput.stok} onChange={handleforminput} />
       </div>
-      <div className='mb-4'>
+      {/* <div className='mb-4'>
         <FormLabel>Varian Barang (Jika ada)</FormLabel>
         <ButtonPrimary onclick={varianonopen}>Kelola</ButtonPrimary>
         <ModalComponent 
@@ -111,7 +115,7 @@ const FormTambahBarangComponent = () => {
           title="Variant Barang"
           size="xl"
         />
-      </div>
+      </div> */}
       <div className='mb-4'>
         <FormLabel>Kategori Barang</FormLabel>
         <ButtonPrimary onclick={kategorionopen}>Pilih</ButtonPrimary>
@@ -121,7 +125,7 @@ const FormTambahBarangComponent = () => {
           onopen={kategorionopen}
           title="Kategori Barang"
           size="xl"
-          body={<FormKategoriBarangComponent />}
+          body={<FormKategoriBarangComponent datasubmit={props.datasubmit}  />}
         />
       </div>
       <div className='mb-4'>
@@ -133,7 +137,7 @@ const FormTambahBarangComponent = () => {
           <FormLabel>Diskon Barang</FormLabel>
           <InputGroup>
             <InputLeftAddon>%</InputLeftAddon>
-            <Input type="number" name="diskon" onChange={handleforminput} max={2} />
+            <Input type="number" name="diskon" value={forminput.diskon} onChange={handleforminput} max={2} />
           </InputGroup>
         </div>
 
