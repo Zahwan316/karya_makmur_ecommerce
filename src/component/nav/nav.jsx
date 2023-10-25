@@ -47,21 +47,25 @@ const NavComponent = (props) => {
             </>
         )
     }
-    const handleOnSearch = (string, results) => {
+    const handleOnSearch = (string, result) => {
         // onSearch will have as the first callback parameter
         // the string searched and for the second the results.
-        console.log(string, results)
-      }
+        window.location.href = `/search/${string}`
+    }
     
       const handleOnHover = (result) => {
         // the item hovered
-        console.log(result)
+        //console.log(result)
       }
     
       const handleOnSelect = (item) => {
-       
-        console.log(item)
+       window.location.href = `/search/${item.name}`
       }  
+
+      const handleonenter = (item) => {
+        //window.location.href = `/search/${item.name}`
+        console.log("test")
+      }
 
       const items = databarang.map(item => 
         ({
@@ -87,6 +91,7 @@ const NavComponent = (props) => {
                         onHover={handleOnHover}
                         onSelect={handleOnSelect}
                         formatResult={formatresult}
+                        onKeyUp={handleonenter}
                     />
                 </FormControl>
             </div>
