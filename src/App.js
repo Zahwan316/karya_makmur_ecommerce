@@ -12,6 +12,7 @@ import SettingPage from './page/settings';
 import ListSemuaBarangComponent from './page/listbarang';
 import NotFoundPage from './page/notFound';
 import LoginPage from './page/login';
+import RegistrasiPage from './page/registrasi';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/daftar-transaksi" Component={DaftarTransaksiPage} />
         <Route path="/settings/:option" Component={SettingPage} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/registrasi" element={<RegistrasiPage />} />
         {/* Route Pegawai */}
         <Route path="/pegawai/home" element={<HomePage role="pegawai" />}  />
         <Route path="/pegawai/kategori" element={<KategoriPage role="pegawai" />}  />

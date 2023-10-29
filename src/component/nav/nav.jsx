@@ -74,7 +74,7 @@ const NavComponent = (props) => {
     )
 
     useEffect(() => {
-        console.log(items)
+        
     })
 
 
