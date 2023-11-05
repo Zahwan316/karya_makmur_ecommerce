@@ -14,21 +14,30 @@ const CardAlamatComponent = (props) => {
     props.getTypeBtn(type,id)
   }
 
+  const handleChangeAlamat = () => {
+    props.changealamat(props.id)
+  }
+
+  const handleOpenModal = () => {
+    props.getIdBtn(props.id)
+    onOpen()
+  }
+
   return(
     <>
     <Box className={`flex bg-gray-200 p-6 rounded-lg mb-4 border ${props.keaktifan == 1 && "border-green-500"}`}>
-      <Box >
-        <h2 className='font-bold text-lg text-gray-500'>Rumah</h2>
-        <h2 className='font-bold text-lg'>Nama Pembeli</h2>
-        <Text noOfLines={1} className='mb-2'>JL Lorem Ipsum Dolor Sit Amet Constectur adipiscing elit ila magnum lorem ipsum dolor sit amet constectur adipisicing elit lorem</Text>
-        <p className='cursor-pointer' onClick={onOpen} style={{color:"#79AC78"}}>Edit Alamat</p>
+      <Box className='w-5/6'>
+        <h2 className='font-bold text-lg text-gray-500'>{props.label}</h2>
+        <h2 className='font-bold text-lg'>{props.nama}</h2>
+        <Text noOfLines={1} className='mb-2'>{props.alamat}</Text>
+        <p className='cursor-pointer' onClick={handleOpenModal} style={{color:"#79AC78"}}>Edit Alamat</p>
       </Box>
-      <Box className='flex items-center'>
+      <Box className='flex items-center justify-end'>
         {
             props.keaktifan == 1 ?
             <CIcon icon={cilCheck} style={{color:"#79AC78"}} className='w-8 h-8' />
             :
-            <Button style={{backgroundColor:"#79AC78",color:"white"}}>Pilih</Button>
+            <Button style={{backgroundColor:"#79AC78",color:"white"}} onClick={handleChangeAlamat}>Pilih</Button>
 
         }
       </Box>
@@ -37,7 +46,8 @@ const CardAlamatComponent = (props) => {
         onclose={onClose}
         onopen={onOpen}
         title="Edit Data"
-        body={<FormTambahAlamatComponent type="edit" />}
+        handlesubmit={props.handlesubmit}
+        body={<FormTambahAlamatComponent type="edit" id={props.id} />}
       />
     </Box>
     </>

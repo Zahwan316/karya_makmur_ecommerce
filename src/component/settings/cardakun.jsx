@@ -1,6 +1,7 @@
 import { Avatar, Box, Button } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useAkunStore from '../../state/akun';
 
 const CardAkunComponent = (props) => {
   const menus = [
@@ -14,6 +15,8 @@ const CardAkunComponent = (props) => {
     },
   ]
 
+  const userdata = useAkunStore((state) => state.userdata)
+
   const navigate = useNavigate()
 
   const redirect = (e) => {
@@ -25,7 +28,7 @@ const CardAkunComponent = (props) => {
     <Box className='relative border border-gray-300 w-64 flex flex-col items-center px-4 py-8 rounded-lg h-96'>
       <Box className='flex flex-col justify-center items-center mb-8'>
         <Avatar size="lg" className='mb-2' />
-        <h2>Lorem Ipsum Dolor</h2>
+        <h2>{userdata.nama}</h2>
       </Box>
       <Box className='flex flex-right w-full flex-col mb-8'>
         <h2 className='font-bold text-xl mb-2'>Menu</h2>

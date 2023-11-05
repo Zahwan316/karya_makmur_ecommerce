@@ -45,7 +45,7 @@ const LoginPage = () => {
           showConfirmButton:false
         }
         )
-        Cookies.set("token",res.data.token,{expires:2,httpOnly:true,sameSite:"none"})
+        Cookies.set("token",res.data.token,{expires:2,})
         setTimeout(() => {
           window.location.href = "/"
         },500)
